@@ -14,8 +14,13 @@ class Student
   end
 
  ##instance methods
+
+ def whole_name
+   return "#{@first_name} #{@last_name}"
+ end
+
   def save()
-    sql = 'INSERT INTO hogwarts (first_name, last_name, house, age)
+    sql = 'INSERT INTO students (first_name, last_name, house, age)
     VALUES ($1, $2, $3, $4)
     RETURNING id'
     values = [@first_name, @last_name, @house, @age]
@@ -23,13 +28,29 @@ class Student
     @id = student['id'].to_i
   end
 
+  def update()
+    sql = 'UPDATE students
+      SET (first_name, last_name, house, age)
+      = ($1, $2, $3, $4) WHERE id = $5'
+      values = [@first_name, @last_name, @house, @age]
+      SqlRunner.run(sql, values)
+
  ##CLASS
   def self.all()
-    sql = 'SELECT * FROM hogwarts'
-    hogwarts = SqlRunner.run(sql)
-    result = hogwarts.map  { |student| Student.new(student)}
+    sql = 'SELECT * FROM students'
+    students = SqlRunner.run(sql)
+    result = students.map  { |student| Student.new(student)}
     return result
-  end 
+  end
+
+  def self.find(id)
+    sql = 'SELECT * FROM students WHERE id = $1'
+    values = [id]
+    student = SqlRunner.run(sql, values)
+    result = Student.new(student[0])
+    return result
+  end
+
 
 
 

@@ -1,5 +1,5 @@
-DROP TABLE hogwarts;
-CREATE TABLE  hogwarts (
+DROP TABLE students;
+CREATE TABLE  students (
 
   id SERIAL4 PRIMARY KEY,
   first_name varchar(255),
