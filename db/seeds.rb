@@ -1,26 +1,38 @@
-require_relative('../models/horgwarts')
+require_relative('../models/student')
+require('pry-byebug')
 
-student1 = Hogwarts.new({
-  'first_name' => 'Iain'
-  'last_name' => 'Rogerson'
-  'house' => 'Gryffindor'
+
+student1 = Student.new({
+  'first_name' => 'Iain',
+  'last_name' => 'Rogerson',
+  'house' => 'Gryffindor',
   'age' => 12
 })
-student2 = Hogwarts.new({
-  'first_name' => 'Paul'
-  'last_name' => 'Stevenson'
-  'house' => 'Slytherin'
+student1.save()
+
+student2 = Student.new({
+  'first_name' => 'Paul',
+  'last_name' => 'Stevenson',
+  'house' => 'Slytherin',
   'age' => 11
 })
-student3 = Hogwarts.new({
-  'first_name' => 'Ryan'
-  'last_name' => 'Gosling'
-  'house' => 'Hufflepuff'
+student2.save()
+
+student3 = Student.new({
+  'first_name' => 'Ryan',
+  'last_name' => 'Gosling',
+  'house' => 'Hufflepuff',
   'age' => 13
 })
-student4 = Hogwarts.new({
-  'first_name' => 'Jessica'
-  'last_name' => 'Chastain'
-  'house' => 'Ravenclaw'
+student3.save()
+
+student4 = Student.new({
+  'first_name' => 'Jessica',
+  'last_name' => 'Chastain',
+  'house' => 'Ravenclaw',
   'age' => 12
 })
+student4.save()
+
+binding.pry
+nil
